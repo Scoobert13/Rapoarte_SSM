@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=860"/>
+  <meta name="form-version" content="v42"/>
+  <title></title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: unset; }
+    body { font-size: 12px; color: #1a1917; padding: 0; margin: 0; background: #fff; -webkit-text-size-adjust: 100%; width: 100%; }
+
+    .meta            { display: flex; flex-wrap: wrap; gap: 0; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px; overflow: hidden; }
+    .meta-item       { flex: 1 1 33%; padding: 10px 12px; border-right: 1px solid #ddd; border-bottom: 1px solid #ddd; }
+    .meta-item:nth-child(3n) { border-right: none; }
+    .meta-item .lbl  { font-size: 9px; font-weight: 700; text-transform: uppercase; color: #888; margin-bottom: 3px; }
+    .meta-item .val  { font-size: 13px; font-weight: 500; }
+
+    .tbl             { width: 100%; margin-bottom: 28px; font-size: 11px; border: 1px solid #e0deda; border-radius: 4px; overflow: hidden; }
+    .tbl-head        { display: flex; background: #f0efec; border-bottom: 1px solid #ccc; }
+    .tbl-head .col-q { flex: 0 0 30%; padding: 7px 8px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    .tbl-head .col-r { flex: 0 0 50px; padding: 7px 4px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; text-align: center; }
+    .tbl-head .col-c { flex: 1; padding: 7px 8px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    .row             { display: flex; border-bottom: 1px solid #e0deda; background: #fafaf8; page-break-inside: avoid; break-inside: avoid; }
+    .row:last-child  { border-bottom: none; }
+    .col-q           { flex: 0 0 30%; padding: 7px 8px; border-right: 1px solid #e0deda; line-height: 1.5; overflow-wrap: break-word; font-size: 11px !important; }
+    .col-r           { flex: 0 0 50px; padding: 7px 4px; border-right: 1px solid #e0deda; text-align: center; display: flex; align-items: center; justify-content: center; }
+    .col-c           { flex: 1; padding: 7px 8px; line-height: 1.5; text-align: left; word-break: normal; word-spacing: normal; font-size: 11px !important; }
+
+    .sec-header                { display: flex; background: #e8eef7; border-bottom: 1px solid #b8c8e8; page-break-inside: avoid; break-inside: avoid; page-break-after: avoid; break-after: avoid; }
+    .sec-header + .row,
+    .sec-header + div          { page-break-before: avoid; break-before: avoid; }
+    .sec-header .col-q         { flex: 1; font-weight: 700; font-size: 12px; color: #1a4d8f; padding: 8px 10px; border-right: none; background: #e8eef7; }
+
+    .badge                     { color: #fff; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 600; display: inline-block; }
+
+    @media print {
+      .col-q span, .col-c { text-align: left !important; word-spacing: normal !important; white-space: normal !important; }
+      html, body { width: 210mm !important; min-height: 297mm; margin: 0 !important; padding: 0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+    @-moz-document url-prefix() {
+      * { text-align: left !important; word-spacing: normal !important; }
+      .col-q, .col-c { font-size: 11px !important; }
+    }
+    @page { size: A4 portrait; margin: 1cm 1.5cm; }
+  </style>
+</head>
+<body>
+  <div style="text-align:center;margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid #1a4d8f;">
+    <h1 style="font-size:20px;font-weight:700;color:#1a1917;letter-spacing:0.02em;font-family:Arial,sans-serif;">FIȘA DE SUPRAVEGHERE ÎN ȘANTIERE</h1>
+  </div>
+  <div class="meta">
+    <div class="meta-item"><div class="lbl">Nr. Raport</div><div class="val">R1</div></div>
+    <div class="meta-item"><div class="lbl">Nume</div><div class="val">test</div></div>
+    <div class="meta-item"><div class="lbl">Email</div><div class="val">test@ppcgroup.com</div></div>
+    <div class="meta-item"><div class="lbl">Data</div><div class="val">26.08.2026</div></div>
+    <div class="meta-item"><div class="lbl">Localitate</div><div class="val">test</div></div>
+    <div class="meta-item"><div class="lbl">Locație</div><div class="val">test</div></div>
+    <div class="meta-item"><div class="lbl">Firma inspectată</div><div class="val">test</div></div>
+    <div class="meta-item"><div class="lbl">Tip lucrare</div><div class="val">test</div></div>
+  </div>
+  <div class="tbl">
+    <div class="tbl-head">
+      <div class="col-q">Întrebare</div>
+      <div class="col-r">Răspuns</div>
+      <div class="col-c">Comentariu</div>
+    </div>
+    <div class="sec-header"><div class="col-q">Secțiunea 1: Verificare generală șantier</div></div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.1. Este întocmit și avizat planul de SSM al șantierului? Există în format fizic și⁠/⁠sau electronic disponibil pentru verificare?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.2. Evaluarea riscurilor este disponibilă și cuprinde: riscurile prezente la locul de muncă, riscurile specifice activității și interferențele (ex: linii electrice, lucrări mecanice etc.)?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.3. Documentația personalului lucrător din șantier este verificată, actualizată și corespunde meseriilor acestora? Este conformă din punct de vedere SSM, SU, PM, electric, ISCIR etc.?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.4. Instruirea lucrătorilor înainte de începerea activității a fost efectuată, documentată și conformă activității și a fost semnată? Este disponibilă pentru verificare?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.5. Șeful de echipă responsabil cu lucrările la fața locului este nominalizat, prezent pe teren și supraveghează activitatea lucrătorilor?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.6. Echipamentele de protecție individuale și colective sunt disponibile în zona de lucru. Acestea sunt eficiente și potrivite (marcate⁠/⁠certificate conform standardului de referință)?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.7. EIP-urile specifice activităților curente sunt purtate și utilizate corect?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.8. Echipamentele disponibile în zona de lucru sunt funcționale, adecvate și complete, sunt certificate, verificate periodic și au instrucțiuni de instalare, utilizare și întreținere?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.9. Echipamentul de lucru (de exemplu, scule, vehicule) este utilizat corect?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.10. Vehiculele și utilajele pentru șantierele de construcții (camioane, macarale, excavatoare, coșuri etc.) sunt autorizate, potrivite pentru locul de muncă, intacte, funcționale, certificate și conforme?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.11. Vehiculele și utilajele pentru șantiere (camioane, macarale, excavatoare, coșuri etc.) sunt autorizate, utilizate corect și stabile în raport cu solul?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.12. Planul de evacuare este disponibil, potrivit pentru tipul și întinderea lucrărilor, complet și ușor de implementat, cu indicarea rutelor de evacuare și a punctelor de adunare?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.13. Trusa de prim ajutor este disponibilă la locul de muncă, completă, în stare bună și accesibilă lucrătorilor?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.14. Există mijloace corespunzătoare pentru acordarea primului ajutor (trusă, targă etc.) disponibile, complete și în stare bună la locul de muncă?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.15. Există punct de adunare în caz de urgență, este marcat corespunzător, cunoscut de toți lucrătorii și accesibil?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.16. Numerele de telefon pentru semnalarea situațiilor de urgență sunt indicate și disponibile în mod clar în zonele de lucru și pe centralele telefonice⁠/⁠interfoane. De asemenea, acestea sunt ușor de accesat?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.17. Vizitatorii sunt însoțiți în orice moment, nu interferează cu activitățile în desfășurare.</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.18. Permisul de lucru este emis, gestionat și respectat de către lucrători?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.19. Procedurile⁠/⁠metodele de lucru sunt disponibile pentru desfășurarea activităților?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.20. Activitățile se desfășoară în conformitate cu standardele, procedurile de operare ale companiei și condițiile⁠/⁠cerințele contractuale SSM, SU și PM?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.21. Semnalizarea punctului de lucru și a șantierului este în conformitate cu prevederile legale? Este suficientă, vizibilă și amplasată în locurile stabilite?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.22. Tot personalul implicat în activitate cunoaște "POLITICA DE STOP WORK"?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.23. Sunt respectate cerințele minime de lucru la temperaturi ridicate și scăzute?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.24. Locurile de muncă sunt menținute într-o stare curată, iar deșeurile rezultate sunt colectate selectiv și depozitate în zonele specifice de depozitare?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.25. Containerele pentru colectarea deșeurilor în șantier sunt suficiente, etichetate corespunzător codurilor de deșeuri și nu prezintă pericol de contaminare a solului sau alte riscuri similare?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.26. Zonele de încărcare⁠/⁠descărcare sunt adecvate din punct de vedere al condițiilor spațiului și al solului?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.27. Zona de lucru este delimitată în mod eficient (inclusiv de către terți), echipată cu semne adecvate, vizibilă și iluminată. În cazul șantierelor pe drum public, se respectă prevederile codului rutier?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.28. Există un Plan de Mediu în care sunt specificate cerințele legale privind protecția mediului?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">1.29. În cazul lucrătorilor străini, care necesită anunțarea și înregistrarea la autoritățile locale de pe teritoriul României, se respectă prevederile legale în acest sens?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="sec-header"><div class="col-q">Secțiunea 2: Lucrări electrice</div></div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">2.1. Au fost realizate separările electrice ale instalației către toate părțile de unde ar putea apărea tensiune?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">2.2. Sunt utilizate elementele de siguranță și blocare la echipamentele de separație (blocare și control de la distanță, blocare mecanică, aplicarea dispozitivelor LOTO)?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">2.3. Dispozitivele de legare la pământ și în scurtcircuit au fost montate corect în zona de lucru?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">2.4. Verificarea absenței tensiunii a fost efectuată?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">2.5. Dispozitivele de echipotențialitate⁠/⁠continuitate necesare au fost aplicate corect?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">2.6. Dispozitivele de echipotențialitate⁠/⁠continuitate, disponibile, în uz sau pentru a fi utilizate, sunt adecvate (cu marcaje conforme cu standardul, complete, intacte, etc. - se trece în "Note", ce dispozitive)?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">2.7. S-au luat măsuri pentru prevenirea atingerii involuntare a părților aflate sub tensiune (distanțe, bariere, teci) și zona de lucru este sigură?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">2.8. Standardele, procedurile operaționale și instrucțiunile SSM sunt respectate pentru activitățile electrice desfășurate?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">2.9. EIP pentru protecția împotriva riscului electric este utilizat corect (se indică EIP în cauză la "Note": mănuși dielectrice din clasa corespunzătoare, cască cu vizieră⁠/⁠scut de protecție, îmbrăcăminte de protecție, etc.)?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">2.10. EIP-ul pentru protecția împotriva riscului electric este disponibil la fața locului, este eficient și adecvat (complet, intact, marcat⁠/⁠certificat în conformitate cu standardele de referință etc. - notă: scrieți în "Note", ce dispozitive)?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">2.11. Instrumentele⁠/⁠echipamentele izolate disponibile la fața locului, utilizate sau urmand a fi utilizate, sunt în stare bună (adecvate pentru utilizare, complete și intacte - se trece în "Note" care)?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">2.12. Există dispozitivele de verificare a absenței tensiunii și sunt în stare bună (adecvate pentru utilizare, complete și intacte)?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">2.13. Dispozitivele de legare la pământ și în scurtcircuit utilizate sau care urmeaza a fi utilizate sunt adecvate. (cu marcaje conforme cu standardul, complete, intacte etc. - se trece în "Note")?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">2.14. Muncitorii folosesc corect detectorul personal de tensiune (PVD) furnizat pentru activitate?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">2.15. Pentru lucrările electrice, este întocmit un permis de lucru valabil pentru lucrarea respectivă, se respectă prevederile, sunt cunoscute riscurile etc.?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="sec-header"><div class="col-q">Secțiunea 3: Lucru la înălțime</div></div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">3.1. Echipamentul individual și colectiv de protecție pentru lucrul la înălțime este purtat și utilizat corect?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">3.2. EIP-urile pentru lucru la înălțime sunt disponibile la fața locului, eficiente și adecvate (complete, intacte, marcate⁠/⁠certificate în conformitate cu standardele de referință etc.)?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">3.3. Toate protecțiile împotriva căderii de la înălțime sunt eficiente și utilizate corect (complete, intacte, marcate⁠/⁠certificate în conformitate cu standardele de referință etc.)?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">3.4. Echipamentul de acces la înălțime (scări, carabine, schele) este disponibil și potrivit pentru lucrare (complet, intact, marcat, certificat)?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">3.5. Echipamentul de acces la înălțime (scări, carabine, schele) este instalat și utilizat corect?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">3.6. Schela este construită corect (examinare vizuală, planeitate, verticalitate), și este semnalizată și utilizată corespunzător?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">3.7. Schelele sunt asamblate, demontate sau mutate de personal instruit și calificat?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">3.8. Scările sunt poziționate și fixate corect pe suprafețe stabile (atât verticale, cât și orizontale) și utilizate corect, în conformitate cu activitățile planificate?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">3.9. Zona de lucru, dacă prezintă goluri tehnologice și nu numai, este semnalizată corespunzător pentru prevenirea căderii de la înălțime?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">3.10. Există sisteme de comunicație între personalul care lucrează la înălțime și cel de la sol (sisteme de emisie-recepție, telefoane mobile etc.)?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="sec-header"><div class="col-q">Secțiunea 4: Risc de cădere a obiectelor și manipularea încărcăturilor</div></div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">4.1. Echipamentele⁠/⁠materialele utilizate pentru activitățile la înălțime sunt asigurate împotriva căderii (de exemplu, prin utilizarea centurilor de lucru adecvate, funiilor etc.)?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">4.2. S-a efectuat delimitarea zonei cu risc de cădere a obiectelor și se garantează respectarea interdicției de a trece persoanele sub încărcătura suspendată?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">4.3. Sarcinile suspendate sunt controlate cu frânghii de ghidare, fixate în mod adecvat, iar echipamentul folosit este corespunzător?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">4.4. Nu sunt depozitate unelte sau echipamente în apropierea marginilor, pe balustrade sau pe suprafețe înalte. Materialele rezultate sunt în ordine și îndepărtate în mod regulat.</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">4.5. În timpul manipulării încărcăturilor, există cel puțin un coordonator responsabil cu ghidarea manevrelor, iar procedurile adoptate garantează siguranța operațiunilor.</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">4.6. Sculele care urmează a fi ridicate sunt depozitate în mod corespunzător, în echipamente omologate și verificate? Nu se depășește sarcina maximă de ridicare indicată?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">4.7. Echipamentele de ridicat (cârligul macaralei, lanțuri de prindere, sufe de ridicat etc.) sunt verificate și au elementele de identificare vizibile?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="sec-header"><div class="col-q">Secțiunea 5: Utilaje și echipamente cu piese în mișcare</div></div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">5.1. Utilajele și dispozitivele utilizate pentru executarea activității sunt echipate cu protecții adecvate și cu sisteme de oprire de urgență, accesibile în timpul activităților?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">5.2. Toate comenzile dispozitivelor sunt etichetate în mod clar cu funcția lor?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">5.3. Muncitorii din apropierea utilajelor cu piese în mișcare urmează instrucțiunile și poartă îmbrăcăminte și accesorii adecvate (evitând colierele, brățările, inelele, îmbrăcămintea largă etc.)?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="sec-header"><div class="col-q">Secțiunea 6: Excavații și lucrări în sol</div></div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">6.1. Activitățile sunt efectuate corect pentru a evita riscul de prăbușire a structurilor⁠/⁠terenurilor (de exemplu, depozitarea pământului în funcție de adâncime etc.)?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">6.2. Zonele excavate sunt semnalizate pentru a preveni căderea în șanț?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">6.3. În zonele excavate există limitare de viteză de circulație?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="sec-header"><div class="col-q">Secțiunea 7: Manipularea și depozitarea materialelor</div></div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">7.1. Manipularea încărcăturilor este conformă cu planul de ridicare, evaluarea adecvării terenului, greutatea materialelor, integritatea frânghiilor⁠/⁠dispozitivelor de ridicare?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">7.2. Cărucioarele manuale sau motorizate sunt potrivite pentru sarcina ce trebuie transportată⁠; ⁠acestea sunt echipate cu sisteme pentru blocarea sarcinii?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">7.3. Rafturile, spațiile de depozitare, dulapurile etc. sunt ușor accesibile, au indicată capacitatea maximă și prezintă încărcături corect stivuite și⁠/⁠sau fixate pentru a împiedica alunecarea sau căderea?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="sec-header"><div class="col-q">Secțiunea 8: Substanțe chimice și periculoase</div></div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">8.1. Fișele de securitate pentru substanțele chimice sunt actualizate, prezente la locul de muncă și puse la dispoziția lucrătorilor?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">8.2. Manipularea, depozitarea și utilizarea substanțelor se efectuează în conformitate cu prevederile fișelor de securitate și ale documentului de evaluare a riscurilor?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">8.3. Materialele și substanțele chimice combustibile sunt depozitate în zone separate, departe de sursele de aprindere, iar rezervoarele sunt fixate pentru a preveni răsturnarea și deteriorarea?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">8.4. Dacă există un risc de concentrații chimice periculoase în timpul lucrului, concentrația este monitorizată (dacă este necesar, chiar și continuu) cu sisteme de detectare (explozimetru⁠/⁠detector de gaze)?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">8.5. Recipientele folosite pentru depozitarea produselor chimice (solvenți, soluții de curățat, substanțe petroliere) sunt omologate și etichetate corespunzător?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="sec-header"><div class="col-q">Secțiunea 9: Lucru izolat</div></div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">9.1. Dacă lucrătorul desfășoară o activitate izolată de ceilalți lucrători, acesta are un mijloc de comunicare care permite angajatului să solicite ajutor în caz de urgență și a fost instruit pentru folosirea acestuia?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">9.2. Există o procedură scrisă în care sunt specificate măsurile care trebuie luate pentru astfel de situații, o evaluare a riscurilor, timpii de intervenție etc.?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="sec-header"><div class="col-q">Secțiunea 10: Risc de incendiu</div></div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">10.1. În cazul activităților care pot provoca incendii (de exemplu, sudare, tăiere, utilizarea polizorului), permisul de lucru cu foc este disponibil și se respectă?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">10.2. Există suficiente stingătoare în momentul în care se lucrează cu foc deschis?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">10.3. Zona este liberă de toate materialele combustibile?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">10.4. Prelate⁠/⁠perdele ignifuge sunt utilizate în timpul activităților de sudare?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">10.5. Se cunoaște protocolul de comunicare în situații de urgență (accident cu victimă, incendiu etc.)?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">10.6. Există întocmit un Plan de Urgență specific?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">10.7. Există un loc special amenajat și semnalizat pentru fumat?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="sec-header"><div class="col-q">Secțiunea 11: Spații închise</div></div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">11.1. Sistemul de comunicare între lucrători, sistemul de iluminat și monitorizarea atmosferei sunt implementate și efectuate în conformitate cu Planul de lucru și de urgență?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">11.2. Echipamentele de prim ajutor și recuperare pentru o persoană vătămată sunt prezente, potrivite și eficiente. Aparatele de respirat sunt disponibile, în bune condiții și respectă standardele⁠/⁠reglementările aplicabile?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">11.3. Planurile de lucru și de evacuare au fost postate la intrarea în spațiul închis?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">11.4. În mediile cu risc de contaminare de la una sau mai multe substanțe sunt disponibile detectoare de gaz?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">11.5. Este întocmit un permis de lucru pentru spații închise? Se cunoaște și se respectă întocmai?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="sec-header"><div class="col-q">Secțiunea 12: Operațiuni de tăiere</div></div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">12.1. Lucrătorii expuși la pericolele create prin operațiuni de tăiere sunt protejați cu echipament individual de protecție? Ce anume?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">12.2. Echipamentele folosite pentru tăiere (flex, circular, pendular etc.) sunt omologate, au marcajul CE, au protecții, astfel încât să nu pună în pericol securitatea și sănătatea lucrătorilor?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">12.3. Lucrătorii folosesc EIP corespunzător (mănuși de protecție, ochelari de protecție etc.)?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">12.4. În momentul când se lucrează cu echipamente de tăiat care fac flamă⁠/⁠scântei, au fost îndepărtate posibilele surse de provocare a incendiului?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="sec-header"><div class="col-q">Secțiunea 13: Lucrări de betonare și turnare</div></div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">13.1. Lucrătorii folosesc EIP-ul corespunzător pentru lucrările desfășurate (cască cu prindere sub bărbie, bocanci⁠/⁠cizme de protecție, ochelari, centură de siguranță cu cârlige de prindere, scări etc.)?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">13.2. Există disponibilă o procedură de lucru și o evaluare a riscurilor pentru aceste activități? Este îndeplinită procedura?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">13.3. Există o zonă amenajată și semnalizată corespunzător pentru spălarea betonierelor după turnare?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">13.4. Sunt respectate cerințele legale pentru lucrul la temperaturi ridicate și scăzute, conform prevederilor legale?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="row">
+          <div class="col-q"><span style="display:block;text-align:left;word-spacing:normal;white-space:normal">13.5. După terminarea lucrărilor, zona de lucru este ecologizată, sunt colectate și îndepărtate deșeurile rezultate (resturi de fier, sârme, lemne, plastic, beton etc.)?</span></div>
+          <div class="col-r" style="background:#5a575222;"><span class="badge" style="background:#5a5752">—</span></div>
+          <div class="col-c">—</div>
+        </div><div class="sec-header"><div class="col-q">Secțiunea 14: Feedback inspector asupra lucrării</div></div><div class="row">
+            <div class="col-q">14.1. Cum au întâmpinat membrii echipei acțiunea de control? (ex.: Deschiși, au înțeles că este o oportunitate de îmbunătățire a modului de lucru etc.)</div>
+            <div class="col-r"></div>
+            <div class="col-c">—</div>
+          </div><div class="row">
+            <div class="col-q">14.2. Care a fost reacția în fața neconformităților identificate și a propunerilor de remediere? (ex.: Cunoșteau normele și procedurile aduse în discuție legat de neconformitățile identificate; au acceptat propunerile etc.)</div>
+            <div class="col-r"></div>
+            <div class="col-c">—</div>
+          </div><div class="row">
+            <div class="col-q">14.3. Cum apreciați în general calitatea interacțiunii cu șeful de lucrare și membrii echipei pe durata inspecției? (ex.: Au arătat interes; au evitat interacțiunea etc.)</div>
+            <div class="col-r"></div>
+            <div class="col-c">—</div>
+          </div><div class="sec-header"><div class="col-q">Secțiunea 15: Feedback șef de echipă asupra lucrării</div></div><div class="row">
+            <div class="col-q">15.1. Cum apreciați în general calitatea interacțiunii cu inspectorul? (ex.: atitudine constructivă asupra procesului de inspecție; abordare profesionistă; neconformitățile menționate au fost evidențiate corect etc.)</div>
+            <div class="col-r"></div>
+            <div class="col-c">—</div>
+          </div><div class="sec-header"><div class="col-q">Secțiunea 16: Observații</div></div><div class="row"><div class="col-q">16.1. Încălcări ale regulilor de siguranță identificate</div><div class="col-r"></div><div class="col-c">—</div></div><div class="sec-header"><div class="col-q">Secțiunea 17: Concluzii finale</div></div><div class="row"><div class="col-q">17.1. Note și concluzii generale în urma inspecției</div><div class="col-r"></div><div class="col-c">—</div></div><div class="sec-header"><div class="col-q">Secțiunea 18: Semnătura inspectorului</div></div><div class="row" style="display:block;padding:0;background:transparent;">
+      <div style="display:flex;">
+        <div style="flex:1;padding:12px 16px;border-right:1px solid #e0deda;">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;">
+            <div>
+              <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:#888;margin-bottom:3px;">Nume</div>
+              <div style="font-size:12px;border-bottom:1px solid #ccc;padding-bottom:4px;min-height:20px;"></div>
+            </div>
+            <div>
+              <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:#888;margin-bottom:3px;">Funcție</div>
+              <div style="font-size:12px;border-bottom:1px solid #ccc;padding-bottom:4px;min-height:20px;"></div>
+            </div>
+            <div>
+              <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:#888;margin-bottom:3px;">Firma</div>
+              <div style="font-size:12px;border-bottom:1px solid #ccc;padding-bottom:4px;min-height:20px;"></div>
+            </div>
+            <div>
+              <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:#888;margin-bottom:3px;">Data</div>
+              <div style="font-size:12px;border-bottom:1px solid #ccc;padding-bottom:4px;min-height:20px;">26.08.2026</div>
+            </div>
+          </div>
+        </div>
+        <div style="flex:1;padding:12px 16px;">
+          <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:#888;margin-bottom:8px;">Semnătură</div>
+          <div style="height:200px;border-bottom:1.5px solid #999;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
